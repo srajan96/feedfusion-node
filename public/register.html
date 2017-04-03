@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-signin-client_id" content="668791001514-nk241ksbt17t0g5iksij3p3phspocgru.apps.googleusercontent.com">
+
+    <title>
+        Social Handle Aggregator
+    </title>
+    <link rel="icon" type="image/ico" href="favicon.ico">
+<!-- Material Design fonts -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<!-- Bootstrap -->
+<link href="src/css/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="src/css/bootstrap-3.3.6-dist/css/bootstrap-next.css" rel="stylesheet">
+<!--Font Awesome-->
+<link href="src/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<!-- Bootstrap Material Design -->
+<link href="src/css/bootstrap-material-design/dist/css/bootstrap-material-design.css" rel="stylesheet" type="text/css"/>
+<link href="src/css/bootstrap-material-design/dist/css/ripples.css" rel="stylesheet" type="text/css"/>
+ <!--This is our custom JS File.Include all you JS functions here-->
+<script src="src/js/main.js" type="text/javascript"></script>
+    <!--Circular Progress-->
+
+    <style>
+
+    body {
+            background: url("src/resources/background.jpg") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+    }
+
+    .form-group{
+        margin-top: 15px;
+    }
+   .panel-transparent {
+        background: none;
+        color: white;
+    }
+
+    .panel-transparent .panel-heading{
+        background: rgba(122, 130, 136, 0.7)!important;
+    }
+
+    .panel-transparent .panel-body{
+        background: rgba(46, 51, 56, 0.7)!important;
+
+    }
+
+     .panel-transparent-lighter {
+        background: none;
+        color: white;
+    }
+
+    .panel-transparent-lighter .panel-heading{
+        background: rgba(122, 130, 136, 0.4)!important;
+    }
+
+    .panel-transparent-lighter .panel-body{
+        background: rgba(46, 51, 56, 0.4)!important;
+
+    }
+    .material-icons{
+        color: white;
+    }
+    .form-control{
+        color: white;
+    }
+    .tooltip_templates { display: none; }
+
+        </style>
+
+    </head>
+    <body>
+
+        <div class="container" style="margin-left:50px;">
+
+        <div class="row">
+           <div class="col-lg-6" >
+
+            <div class="row-fluid">
+            <div class="col-lg-10" style="padding-top: 0px;">
+                 <div class="text-center" style="padding-bottom:10px;color:white;" ><h1>Lets get started</h1></div>
+                <div id="mypanel" class="panel panel-info panel-transparent">
+                      <div  class="panel-heading">
+                        <h3 class="panel-title text-center">Register to SOHAG</h3>
+                      </div>
+                      <div id="registerpanelbody" class="panel-body">
+
+                    <form id="registerform" class="" method="post" action="register" onsubmit="register('password','repass','username');">
+                            <div class="form-group input-group label-floating">
+                                <span class="input-group-addon"><i class="material-icons">person</i></span>
+                                <label for="name" class="control-label"></label>
+                                <input type="text" class="form-control" id="name" name="name" required placeholder="Name">
+                             </div>
+
+
+                            <div class="form-group input-group label-floating">
+                                <span class="input-group-addon"><i class="material-icons">email</i></span>
+                                <label for="email" class="control-label"></label>
+                                <input type="email" class="form-control" id="email" name="email"  placeholder="Email Here" required>
+                             </div>
+
+                            <div id="username-input" class="form-group input-group label-floating">
+                                <span class="input-group-addon"><i id="username-icon"class="material-icons">account_circle</i></span>
+                                <label for="username" class="control-label"></label>
+                                <input type="text"  id="username" class="form-control" name="username"  placeholder="Choose a username" required>
+                                <p class="help-block" id="username-help" style="font-size: 12px;color:white">Type in username</p>
+
+                            </div>
+
+                            <div class="form-group input-group  ">
+                                <span class="input-group-addon"><i class="material-icons">vpn_key</i></span>
+                                <label for="password" class="control-label"></label>
+                                <input type="password" id="password" name="password" required class="form-control" onkeyup="verifypass('password','repass','white');" placeholder="Choose password" required>
+
+                            </div>
+
+
+
+                        <div class="form-group input-group label-floating " >
+                              <span class="input-group-addon"><i class="material-icons">repeat_one</i></span>
+                               <label for="repass" class="control-label"></label>
+                               <input type="password" id="repass" class="form-control" onkeyup="verifypass('password','repass','white');" name="repass" placeholder="One more time" required>
+
+                         </div>
+                        <div class="form-group" style="margin-top:0px; padding-left:40px;">
+                            <p id="repasshelp"  style="visibility:hidden;font-size: 15px;font-weight:bold">some text here</p>
+                         </div>
+
+                             <button type="submit" name="submitbtn" id="submitbtn"  class="btn btn-info btn-raised form-control btn btn-primary">Register</button>
+
+                    </form>
+
+                      </div>
+                </div>
+            </div>
+        </div>
+            </div>
+            <!--register ends-->
+
+        </div>
+
+     </div>
+    <!--outermost container ends-->
+
+    </body>
+</html>

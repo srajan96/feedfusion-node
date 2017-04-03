@@ -1,0 +1,132 @@
+<style>
+
+   
+    .form-group{
+        margin-top: 15px;
+    }
+   .panel-transparent {
+        background: white;
+        color: white;
+    }
+
+    .panel-transparent .panel-heading{
+        background: rgba(122, 130, 136, 0.7)!important;
+    }
+
+    .panel-transparent .panel-body{
+        background: rgba(46, 51, 56, 0.7)!important;
+
+    }
+
+     .panel-transparent-lighter {
+        background: none;
+        color: white;
+    }
+
+    .panel-transparent-lighter .panel-heading{
+        background: rgba(122, 130, 136, 0.4)!important;
+    }
+
+    .panel-transparent-lighter .panel-body{
+        background: rgba(46, 51, 56, 0.4)!important;
+
+    }
+    
+    .form-control{
+        color: black;
+    }
+    .regbody{
+    
+    
+    height: 100%;
+    
+    padding: 0;
+    margin: 0;
+
+    }
+
+        </style>
+<header>
+
+</header>		
+    <div class='regbody'>
+        <div class="container " style="display:flex;justify-content:center;align-items:center;">
+
+            <div class="col-lg-5" style="">
+                 <div class="text-center" style="padding-bottom:10px;color:white;" ><h1>Lets get started</h1></div>
+                <div id="mypanel" class="panel panel-info">
+                      
+                      <div id="registerpanelbody" class="panel-body">
+                            <h3 class="text-center">Register to Feedfusion</h3>
+                    <form id="registerform" >
+                            
+                        
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <label for="username" class="control-label"></label>
+                                 <input type="text" class="form-control" id="name" name="name" ng-model="userdata.name" required placeholder="Name">
+                             
+                              </div>
+                            </div>
+
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                 <label for="email" class="control-label"></label>
+                                <input type="email" class="form-control" id="email" name="email" ng-model='userdata.email' placeholder="Email Here" required>
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <label for="username" class="control-label"></label>
+                                <input type="text"  id="username" class="form-control" name="username" ng-model="userdata.username" placeholder="Choose a username" required>
+                                 
+                              </div>
+                                <!-- <p class="help-block" id="username-help" style="font-size: 12px;color:white">Type in username</p>-->
+                            </div>
+                          
+                         <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                 <label for="password" class="control-label"></label>
+                                <input type="password" id="password" name="password" ng-model="userdata.pass" class="form-control" ng-keyup="verifypass()" placeholder="Choose password" required>
+
+                              </div>
+                         </div>
+
+                        <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-repeat" aria-hidden="true"></i></span>
+                                 <label for="repass" class="control-label"></label>
+                               <input type="password" id="repass" class="form-control" ng-model="userdata.repass" ng-keyup="verifypass();" name="repass" placeholder="One more time" required>
+                              </div>
+                         </div>
+                            
+
+                        <div class="form-group">
+                            <p id="repasshelp"  ng-style="repasshelpstyle">{{repasshelp}}</p>
+                            <button  name="submitbtn" id="submitbtn" style="width:100%" class="btn btn-success" ng-click="register()">Register</button>
+                         </div>
+
+
+
+                        
+                       
+
+                    </form>
+
+                      </div>
+                </div>
+            </div>
+       
+            
+            <!--register ends-->
+
+        
+
+     </div>
+    <!--outermost container ends-->
+</div>

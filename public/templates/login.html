@@ -1,0 +1,132 @@
+
+<style>
+
+    
+    .loginbody{
+        
+        padding:0;
+        margin: 0px;
+        height:150%;
+    }
+
+   .panel-transparent {
+        background: none;
+        color: white;
+    }
+    .panel{border:5px solid #fff ;}
+
+    .panel-transparent .panel-heading{
+        background: #4d90fe !important;
+    }
+
+    .panel-transparent .panel-body{
+        background: rgba(46, 51, 56, 0.7)!important;
+
+    }
+
+     .panel-transparent-lighter {
+        background: none;
+        color: white;
+    }
+
+    .panel-transparent-lighter .panel-heading{
+        background: rgba(122, 130, 136, 0.4)!important;
+    }
+
+    .panel-transparent-lighter .panel-body{
+        background: rgba(46, 51, 56, 0.4)!important;
+
+    }
+    .bigicon{
+        color:white;
+        
+    }
+  
+</style>
+
+<div class="loginbody">
+      <div class="container" style="padding-top:50px;">
+        <div class="row col-lg-12">
+          <div class="col-lg-6">
+                <div class="container" style="padding-top:2px;">
+                    <div class="row">
+                        <div class="col-lg-6 " style="font-family:Roboto;">
+                                <h1 style="color:white">FeedFusion</h1>
+                                <h3 style="color:white">Your social life,all at once!</h3>
+                            <div class="col-lg-offset-1">
+                                <div class="row" style="margin-top:2em;text-align:center;">
+                                <div class="col-sm-1 col-sm-offset-1">
+                                     <i class="fa fa-twitter fa-4x bigicon"></i>
+                                </div>
+                                </div>
+                               
+                                <div class="row" style="text-align:center;">
+                                    <div class="col-sm-1" style="margin-top:2.5em;">
+                                         <i class="fa fa-facebook fa-4x bigicon"></i>
+                                    </div>
+                                    <div class="col-sm-1 col-sm-offset-1"  style="margin-top:2.5em;">
+                                         <i class="fa fa-instagram fa-4x bigicon"></i>
+                                    </div>
+                                </div>  
+                            </div>
+                            
+                            <div id="rotateBox">
+                                
+                            </div>
+                                   
+                           <!--  <div style="">
+                                <h2 style="color:white">Making your social life easy,and time saving too.</h2>
+                                
+                            </div>-->
+                            
+                           
+                            
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--description starts-->
+            <div class="col-lg-6" style="padding-top:80px;">
+            <div class="row-fluid">
+            <div class="col-lg-offset-2 col-lg-8" style="padding-top: 20px;">
+                <div class="panel panel-info">
+                      <h3  class=" text-center" >Login</h3>
+                      <div class="panel-body">
+                            
+                    <form id="loginform" >
+                           <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
+                                <label for="username" class="control-label"></label>
+                                <input type="text" class="form-control" ng-model="userdata.username" placeholder="Enter username" required>
+                     
+                              </div>
+                            </div>
+                            
+                            <div class="form-group">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                                <input type="password" class="form-control" ng-model="userdata.password" placeholder="Enter Password" required>    
+                              </div>
+                            </div>
+                        <div class="form-group">
+                             <button type="submit" style="width:100%" class="btn btn-info" ng-click="login()">Login</button>
+                        </div>
+                        <div class="form-group">
+                             <button type="submit" style="width:100%" class="btn btn-danger" ng-click="rootctrl.redirect('/register');">Don't have an account?Get One!</button>
+                        </div>
+                       
+
+                             </form>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+      <!--outermost container ends-->
+</div>
+

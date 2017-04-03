@@ -1,0 +1,85 @@
+<div class="container-fluid homepagebody">
+  <div class="row">
+    <div class="col-xs-12 visible-xs">
+      <ul class="nav nav-tabs nav-stacked nonunderline" id="verticalTabs">Social Handle Aggregator
+        <li id="icons" ng-class="{ active: isSet(0) }">
+			<a href ng-click="setTab(0)">
+				<img src="images/Twitter.png" class="icon-size">
+				<img src="images/fb.png" class="icon-size">
+				<img src="images/insta.png" class="icon-size">
+			</a>
+		</li>
+		<li ng-class="{ active: isSet(1) }">
+          	<a href ng-click="setTab(1)">Add Account</a>
+        </li>
+		<li>
+			<div ng-show="isSet(1)" id="addacc">
+				<img src="images/Twitter.png" class="icon-size" ng-click="$scope.authenticate('twitter')">
+				<img src="images/fb.png" class="icon-size" ng-click="$scope.authenticate('facebook')">
+                                <img src="images/insta.png" class="icon-size" ng-click="$scope.authenticate('instagram')">
+                        </div>
+		</li>
+        <li ng-class="{ active: isSet(2) }">
+           	<a href ng-click="setTab(2)">Settings</a>
+        </li>
+		
+      </ul>
+
+    </div>
+</div>
+    <div class="row">
+    <div class="col-md-2 col-sm-2 col-lg-2 hidden-xs">
+		<ul class="nav nav-tabs nav-stacked nonunderline" id="verticalTabs">Social Handles
+			<li id="icons" ng-class="{ active: isSet(0) }">
+				<a href ng-click="setTab(0)" >
+					<img src="images/Twitter.png" class="icon-size">
+					<img src="images/fb.png" class="icon-size">
+					<img src="images/insta.png" class="icon-size">
+				</a>
+			</li>
+			<li ng-class="{ active: isSet(1) }">
+            	<a href ng-click="setTab(1)">Add Account</a>
+         	</li>
+			<li>
+				<div ng-show="isSet(1)" id="addacc">
+					<button ng-click="authenticate('twitter')"><img src="images/Twitter.png" class="icon-size"></button>
+                                        <button ng-click="authenticate('facebook')"><img src="images/fb.png" class="icon-size"></button>
+                                        <button ng-click="authenticate('instagram')"><img src="images/insta.png" class="icon-size"></button>
+				</div>
+			</li>
+         	<li ng-class="{ active: isSet(2) }">
+            	<a href ng-click="setTab(2)">Settings</a>
+         	</li>
+			
+		</ul>
+    </div>
+    <div class="col-md-10 col-sm-10 col-lg-10 col-xs-12">
+		<div ng-show="isSet(0)||isSet(1)">
+		
+			<div class="well">
+				<div class="feed">
+					<div class="sohag-info-heading"><h4></h4></div>
+					<div class="sohag-info-body"><p></p></div>
+				</div>
+			</div>
+			<div class="well">
+				<p>{{home}}</p>
+			</div>
+		</div>
+  		
+    </div>
+	<div class="col-md-10 col-sm-10 col-lg-10 col-xs-12">
+		<div ng-show="isSet(2)">
+		
+			<div class="well">
+			
+			</div>
+			<div class="well">
+				
+			</div>
+		</div>
+  		
+    </div>
+ 	</div>
+</div>
+	

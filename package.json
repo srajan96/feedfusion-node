@@ -1,0 +1,21 @@
+{
+  "name": "basic",
+  "version": "1.0.0",
+  "description": "oose app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Suryansh Soni",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "multer": "^1.2.0",
+    "mysql": "^2.11.1",
+    "socket.io": "^1.5.0"
+  }
+}

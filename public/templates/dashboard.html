@@ -1,0 +1,244 @@
+<header>
+     <nav class="navbar navbar-default navbar-fixed" style="margin-bottom: 0px;>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="" ng-click="rootctrl.redirect('/')">Feedfusion</a>
+    </div>
+	<div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+          <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{username}}<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="" ng-click="manageAccount()">Manage accounts</a></li>
+            <li><a href="" ng-click="changePassword()">Change Password</a></li>
+            
+            <li class="divider"></li>
+            <li><a href="" ng-click="logout()">Logout</a></li>
+            
+          </ul>
+        </li>
+      </ul>
+      
+    </div>
+  </div>
+  </div>
+</nav>
+</header>
+    <!--Main content starts-->
+      <div >
+          <!--User area to post content-->
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+                <div style="padding:15px;">
+                    <form class="form-horizontal">
+                      <fieldset>
+                        <div class="form-group">
+                          
+                          <div class="col-lg-10">
+                            <textarea class="form-control" rows="3" id="textArea" placeholder="Whats on your mind,name?"></textarea>
+                            <span class="help-block"></span>
+                          </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                          <div class="col-lg-10 ">
+                                <button type="submit" class="btn btn-success">Post</button>
+                               <button type="reset" class="btn btn-error">Cancel</button>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>                    
+                </div>
+            </div>  
+        </div>
+          <!--post content ends-->
+          <hr><!--Timeline streams start-->
+          <div class="row">
+              <div style="padding:10px;">
+              <div class="col-sm-12 col-lg-4">
+                    <div class="panel fbpanel" >
+                          <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-facebook " style="margin-right:5px;" aria-hidden="true"></i>  Facebook</h3>
+                          </div>
+                          <div class="panel-body">
+                            Panel content
+                          </div>
+                    </div>
+              </div>
+              <div class="col-sm-12 col-lg-4">
+                  <div class="panel twpanel">
+                      <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-twitter" style="margin-right:5px;" aria-hidden="true"></i> Twitter</h3>
+                      </div>
+                      <!--<div class="panel-body" >
+                         <div class="tweet" name="tweet" ng-repeat="id in tweetid" tweetID="{{id}}"></div>
+                        
+                      </div>-->
+					  <div ng-repeat="tweetID in tweetid" twitter-widget-initialize>
+						<twitter-widget twitter-widget-id="tweetID">
+						</twitter-widget>
+					  </div>
+                </div>
+              </div>
+              <div class="col-sm-12 col-lg-4">
+                  <div class="panel inpanel">
+                      <div class="panel-heading">
+                          <h3 class="panel-title"><i class="fa fa-instagram" style="margin-right:5px;" aria-hidden="true"></i>Instagram</h3>
+                      </div>
+                      <div class="panel-body">
+                        Panel content
+                      </div>
+                </div>
+              </div>
+            
+              </div>
+            
+              
+        </div>
+
+
+          <!--Timeline stream ends-->
+      </div>
+    <!--Main content ends-->
+
+      
+<footer class="text-center">Copyright &copy;2017 Team Feedfusion </footer>
+      
+ <script type="text/ng-template" id="accountModal.html">
+<!--Modal to manage accounts-->
+<div class="" id="connectaccounts">
+    <div class="">
+        <div class="">
+             <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()">&times;</button>
+                <h3 class="modal-title">Connect your social accounts</h3>
+            </div>
+            <div class="modal-body">
+               <div class="row">
+                    <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                        <div> <i class="fa fa-facebook fa-4x" style="" aria-hidden="true"></i></div>
+                        <div><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('facebook')">Connect Facebook</a></div>
+                   </div>
+                   <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                        <div> <i class="fa fa-twitter fa-4x" style="" aria-hidden="true"></i></div>
+                        <div><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('twitter')">Connect Twitter</a></div>
+                   </div>
+                   <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                        <div> <i class="fa fa-instagram fa-4x" style="" aria-hidden="true"></i></div>
+                        <div><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('instagram')">Connect Instagram</a></div>
+                   </div>
+
+             </div>
+                <hr>
+                <div class="row">
+                    <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                      <div> <i class="fa fa-facebook fa-4x fbcolor"  aria-hidden="true"></i></div>
+                      <div><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div>
+                    </div>
+                    <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                     <div> <i class="fa fa-twitter fa-4x twcolor" aria-hidden="true" ></i></div>
+                      <div><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div>
+                    </div>
+                    <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                        <div> <i class="fa fa-instagram fa-4x incolor" aria-hidden="true" ></i></div>
+                        <div><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div> 
+
+                   </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+
+                <button class="btn btn-info" ng-click="close()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+<!--Manage accounts ends-->
+      
+<!--Modal to change password-->
+<script type="text/ng-template" id="passwordModal.html">
+<div class="" id="changepassword">
+    <div class="">
+        <div class="">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="cancel()">&times;</button>
+                <h3 class="modal-title">Change Your Password</h3>
+            </div>
+            <form  id="changepassform">
+            <div class="modal-body">
+              
+                   <div>
+                    
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-clock-o" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="userdata.curpass" placeholder="Current Password">                         
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-key" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="userdata.pass" placeholder="New Password" ng-keyup="verifypass()">                          
+                          </div>
+                        </div>
+                        
+                        <div class="form-group">
+                          <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-repeat" aria-hidden="true"></i></span>
+                            <input type="password" class="form-control" ng-model="userdata.repass" placeholder="One more time,please" ng-keyup="verifypass()">                         
+                          </div>
+                        </div>
+						<div class="form-group" >
+                            <p id="repasshelp"  ng-style="repasshelpstyle">{{repasshelp}}</p>
+                         </div>
+                   
+                   </div>
+               
+             
+                
+            </div>
+            <div class="modal-footer">
+                <button  class="btn btn-success" ng-click="update()">Change Password</button>
+                <button class="btn btn-info" ng-click="close()">Close</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</script>
+<script sync src="https://platform.twitter.com/widgets.js"></script>
+<!--
+<script>
+
+  showTweet = (function(){
+
+    var tweets = document.getElementsByName("tweet");
+      console.log(tweets);
+    tweets.forEach(function(tweet){
+        var id = tweet.getAttribute("tweetID");
+
+        twttr.widgets.createTweet(
+          id, tweet, 
+          {
+            conversation : 'all',    // or all
+            cards        : 'visible',  // or visible 
+            linkColor    : '#cc0000', // default is blue
+            theme        : 'light'    // or dark
+          });
+        
+    });
+  });
+    
+</script>
+-->
