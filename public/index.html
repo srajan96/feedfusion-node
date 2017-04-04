@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feed fusion</title>
-    <link rel="stylesheet" media="screen" href="particles/css/style.css">
+  
     <link rel="icon" href="https://i.stack.imgur.com/dtPNz.png" type="image/jpg">
     <script src="script/lib/jquery.min.js"></script>
     <script src="script/lib/angular.min.js"></script>
@@ -15,36 +15,12 @@
     <style>
     @import "css/font-awesome.min.css";
     @import "css/style.css";
-    .mybg{
-          
-          position: relative;
-          top: 50%; left: 50%;
-          transform: translate(-50%, -50%);
-          
-    }
-    #particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #2b2b2f;
-  background-image: url("");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 50%;
-}
-canvas {
-  display: block;
-  vertical-align: bottom;
-}
-  </style>
+   
+   </style>
   </head>
  
-  <body class="mybg" data-status={{dataStatus}}>
-   <div id="particles-js"></div>
-
-
-
-    <div ng-view class=" container-fluid" style="position:relative;padding: 0px;">
+  <body data-status={{dataStatus}}>
+    <div ng-view class=" container-fluid" style="padding: 0px;">
          
     </div>
 
@@ -66,9 +42,7 @@ canvas {
  --> 
 
 
-<!-- scripts -->
-<script src="particles/particles.js"></script>
-<script src="particles/js/app.js"></script>
+
   </body>
 
 </html>

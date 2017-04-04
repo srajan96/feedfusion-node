@@ -1,7 +1,5 @@
 
 <style>
-
-    
     .loginbody{
         
         padding:0;
@@ -41,11 +39,25 @@
         color:white;
         
     }
+	#particles-js{
+		position:fixed;
+		top:0;
+		right:0;
+		bottom:0;
+		left:0;
+		z-index:0; 
+		background:#2b2b2f
+	}
+	#logincontainer{
+		postion:relative;
+	}
+	
   
 </style>
 
 <div class="loginbody">
-      <div class="container" style="padding-top:50px;">
+<div id="particles-js"></div>
+      <div class="container" id="logincontainer" style="padding-top:50px;">
         <div class="row col-lg-12">
           <div class="col-lg-6">
                 <div class="container" style="padding-top:2px;">
@@ -129,4 +141,8 @@
         </div>
       <!--outermost container ends-->
 </div>
+
+<!-- scripts -->
+<script src="../particles/particles.js"></script>
+<script src="../particles/js/app.js"></script>
 
