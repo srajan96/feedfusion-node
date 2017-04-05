@@ -34,7 +34,7 @@ sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
  
     $authProvider.instagram({
       clientId: '799d1f8ea0e44ac8b70e7f18fcacedd1',
-      redirectUri: window.location.origin+"/ssfeedfusion/auth/instagram"
+      redirectUri: window.location.origin+"/auth/instagram"
     });
 
  $authProvider.twitter({
