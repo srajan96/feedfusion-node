@@ -136,7 +136,7 @@ app.post('/auth/twitter', function(req, res) {
   }
 });
 /*------------------------------------------------------------------------------------------------------*/
-app.get('/instagram', function(req, res) {
+app.get('/auth/instagram', function(req, res) {
   var accessTokenUrl = 'https://api.instagram.com/oauth/access_token';
 	console.log("here");
   var params = {
