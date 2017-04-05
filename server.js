@@ -135,6 +135,32 @@ app.post('/auth/twitter', function(req, res) {
     });
   }
 });
+/*------------------------------------------------------------------------------------------------------*/
+app.post('/auth/instagram', function(req, res) {
+  var accessTokenUrl = 'https://api.instagram.com/oauth/access_token';
+
+  var params = {
+    client_id: req.body.clientId,
+    redirect_uri: req.body.redirectUri,
+    client_secret: "a6fc64493c6f4e5fa6db58b34fd8071b",
+    code: req.body.code,
+    grant_type: 'authorization_code'
+  };
+
+  // Step 1. Exchange authorization code for access token.
+  request.post({ url: accessTokenUrl, form: params, json: true }, function(error, response, body) {
+
+    // Step 2a. Link user accounts.
+    if (req.header('Authorization')) {
+		var token = req.header('Authorization').split(' ')[1];
+		var userinstagram = body.user.id;
+        var userpicture =  body.user.profile_picture;
+        var userdisplayName = body.user.username;
+		console.log(token);
+		console.log(userinstagram);
+	}  
+  });
+});
 
 
 
