@@ -4,7 +4,7 @@
   "description": "oose app",
   "main": "server.js",
   "scripts": {
-    "test": "console.log("tested");",
+    "test": "",
     "start": "node server.js"
   },
   "author": "Suryansh Soni",
