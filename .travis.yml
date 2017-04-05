@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- '6'
+addons:
+  ssh_known_hosts: 139.59.64.249
+after_success:
+- chmod +x _scripts/deploy.sh
+- _scripts/deploy.sh
+before_install:
+- openssl aes-256-cbc -K $encrypted_98cd1df60ba8_key -iv $encrypted_98cd1df60ba8_iv
+  -in deploy.enc -out deploy -d
+- openssl aes-256-cbc -K $encrypted_65abf4490a15_key -iv $encrypted_65abf4490a15_iv
+  -in deploy.enc -out deploy -d
+notifications:
+  email:
+  - sonisrajan96@gmail.com
+  - soni.suryansh11130@gmail.com
