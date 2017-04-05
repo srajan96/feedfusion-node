@@ -5,10 +5,10 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
     $scope.home = {};
     $scope.tab=0;
     $scope.dataStatus="not-ready";
-	$scope.username=$sessionStorage.username;
+	  $scope.username=$sessionStorage.username;
     $scope.flipped="false";
-	$scope.tweetid={
-		
+	  $scope.tweetid={
+
   "1": "848631648505679872",
   "2": "848627670271348741",
   "3": "848627062248271876",
@@ -32,7 +32,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
 	};
 	//$scope.tweetid=[];
-	
+
 	console.log($scope.tweetid);
     $scope.setTab = function(tabIn){
       $scope.tab = tabIn;
@@ -58,21 +58,21 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
         }
 
     );
-    
+
     $scope.authenticate = function(provider) {
-       console.log("in authenticate"); 
+       console.log("in authenticate");
       $auth.authenticate(provider)
         .then(function() {
           toastr.success('You have successfully signed in with ' + provider + '!');
           $location.path('/');
         });
     };
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
 	$scope.manageAccount = function () {
         console.log("in manage account ");
         $uibModal.open({
@@ -89,14 +89,14 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
             backdropClass: 'modal-backdrop',
         });
     }
-	
+
     $scope.logout = function(){
         console.log("Checking");
             SohagRootService.logout().then(
                 function (response) {
 					$sessionStorage.sessionId="";
 					$sessionStorage.username="";
-					
+
 					$scope.rootctrl.redirect("/");
 
 			    },
@@ -105,13 +105,13 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 				}
 
             );
-            
-            
-        
-       
+
+
+
+
     };
-	
-		
+
+
 
 });
 
@@ -133,15 +133,15 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
 
 sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance){
-    
-	
+
+
 	$scope.repasshelp="done";
     $scope.repasshelpstyle={
         "visibility":"hidden",
         "font-size": "15px",
         "font-weight":"bold"
     };
-    
+
     $scope.userdata={
         curpass:"",
         pass:"",
@@ -151,7 +151,7 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 		console.log("in verify pass");
 		var passfield=$scope.userdata.pass;
 		var repassfield=$scope.userdata.repass;
-    
+
 		$scope.repasshelpstyle.visibility="visible";
 		if(passfield.value!==""){
 			if(passfield===repassfield ){
@@ -171,7 +171,7 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 
 					return false;
 				}
-					
+
 				return true;
 			}
 			else{
@@ -207,14 +207,14 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 						$scope.repasshelp="Sessionid error.Redirecting";
 						$scope.rootctrl.redirect("/");
 					}
-						
-						
+
+
                 },
                 function (response) {
 					$scope.repasshelp="error";
 					console.log("loading error of login");
                     console.log(response);
-					
+
                 }
 
             );
@@ -233,7 +233,7 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-    
+
 });
 
 
@@ -241,16 +241,16 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 
 
 sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance,$auth){
-    
+
 	$scope.authenticate = function(provider) {
-       console.log("in authenticate"); 
+       console.log("in authenticate");
       $auth.authenticate(provider)
         .then(function() {
           toastr.success('You have successfully signed in with ' + provider + '!');
           $location.path('/');
         });
     };
-	
+
     $scope.close = function(){
         $uibModalInstance.dismiss('cancel');
         $route.reload();
@@ -262,6 +262,5 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
-    
-});
 
+});
