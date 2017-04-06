@@ -246,9 +246,10 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 	$scope.authenticate = function(provider) {
        console.log("in authenticate");
       $auth.authenticate(provider)
-        .then(function() {
-          toastr.success('You have successfully signed in with ' + provider + '!');
-          $location.path('/');
+        .then(function(response) {
+          console.log(response.data);
+		  //toastr.success('You have successfully signed in with ' + provider + '!');
+          //$location.path('/');
         });
     };
 

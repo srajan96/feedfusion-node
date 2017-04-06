@@ -83,10 +83,62 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
                     'username':$sessionStorage.username,
                     'session':$sessionStorage.sessionId,
                     'status':postdata.status
-		};
+				};
             var req = {
                 method: 'POST',
                 url: sohagServerUrl +"twitter/postupdate",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+			};
+            return $http(req);
+            
+        },
+		twitterToken:function(tokendata){
+            data={
+                    'username':$sessionStorage.username,
+                    'session':$sessionStorage.sessionId,
+                    'token':tokendata.token,
+					'token_secret':tokendata.token_secret
+				};
+            var req = {
+                method: 'POST',
+                url: sohagServerUrl +"twitter/storetoken",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+			};
+            return $http(req);
+            
+        },
+		facebookToken:function(tokendata){
+            data={
+                    'username':$sessionStorage.username,
+                    'session':$sessionStorage.sessionId,
+                    'token':tokendata.token
+				};
+            var req = {
+                method: 'POST',
+                url: sohagServerUrl +"facebook/storetoken",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+			};
+            return $http(req);
+            
+        },
+		instagramToken:function(tokendata){
+            data={
+                    'username':$sessionStorage.username,
+                    'session':$sessionStorage.sessionId,
+                    'token':tokendata.token
+				};
+            var req = {
+                method: 'POST',
+                url: sohagServerUrl +"instagram/storetoken",
                 headers: {
                     'Content-Type': "application/x-www-form-urlencoded"
                 },
