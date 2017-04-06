@@ -50,14 +50,14 @@ console.log("goind to part 1");
   // Part 1 of 2: Initial request from Satellizer.
   if (!req.body.oauth_token || !req.body.oauth_verifier) {
     var requestTokenOauth = {
-      consumer_key: '1668200646-cR34ReTvqAUgQGNvFQWlbGNkGgksXvq7yFHWlO6',
-      consumer_secret: 'VAU21C4JHFCrbBfwDfTkdLEkSkpjBD7VFkFowFwLPAuoC',
+      consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
+      consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
       callback: req.body.redirectUri
     };
 console.log(requestTokenOauth);
     // Step 1. Obtain request token for the authorization popup.
     request.post({ url: requestTokenUrl, oauth: requestTokenOauth }, function(err, response, body) {
-      var oauthToken = qs.parse(body);
+      var oauthToken = querystring.parse(body);
 		console.log(body);
 		console.log(oauthToken);
 		
@@ -68,8 +68,8 @@ console.log(requestTokenOauth);
   } else {
     // Part 2 of 2: Second request after Authorize app is clicked.
     var accessTokenOauth = {
-      consumer_key: '1668200646-cR34ReTvqAUgQGNvFQWlbGNkGgksXvq7yFHWlO6',
-      consumer_secret: 'VAU21C4JHFCrbBfwDfTkdLEkSkpjBD7VFkFowFwLPAuoC',
+      consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
+      consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
       token: req.body.oauth_token,
       verifier: req.body.oauth_verifier
     };
@@ -77,11 +77,11 @@ console.log(accessTokenOauth);
     // Step 3. Exchange oauth token and oauth verifier for access token.
     request.post({ url: accessTokenUrl, oauth: accessTokenOauth }, function(err, response, accessToken) {
 
-      accessToken = qs.parse(accessToken);
-		console.log(accessToken+"<-- ACEES TOKEN");
+      accessToken = querystring.parse(accessToken);
+		console.log(accessToken);
       var profileOauth = {
-       consumer_key: '1668200646-cR34ReTvqAUgQGNvFQWlbGNkGgksXvq7yFHWlO6',
-      consumer_secret: 'VAU21C4JHFCrbBfwDfTkdLEkSkpjBD7VFkFowFwLPAuoC',
+       consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
+      consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
         token: accessToken.oauth_token,
         token_secret: accessToken.oauth_token_secret,
       };
