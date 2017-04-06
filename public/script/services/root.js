@@ -77,6 +77,23 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
                 data: $httpParamSerializer(data)
 			};
             return $http(req);
+        },
+        getPostStatus:function(postdata){
+            data={
+                    'username':$sessionStorage.username,
+                    'session':$sessionStorage.sessionId,
+                    'status':postdata.status
+		};
+            var req = {
+                method: 'POST',
+                url: sohagServerUrl +"twitter/postupdate",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+			};
+            return $http(req);
+            
         }
     };
     

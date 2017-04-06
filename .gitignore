@@ -1,3 +1,4 @@
 node_modules/
 deploy.enc
 properties.js
+/nbproject/private/

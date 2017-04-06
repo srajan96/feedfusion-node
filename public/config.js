@@ -24,7 +24,8 @@ sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
 
 
       $authProvider.facebook({
-      clientId: '657854390977827'
+      clientId: '1978232082408711',
+      redirectUri: window.location.origin+"/auth/facebook"
     });
 
  
@@ -32,6 +33,10 @@ sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
       clientId: '84670ddd8cf849a1892ae52963ef53a9',
       redirectUri: window.location.origin+"/auth/instagram",
 	  });
+	     $authProvider.twitter({
+      url: '/auth/twitter'
+    });
+
 
  $authProvider.twitter({
   url: '/auth/twitter',

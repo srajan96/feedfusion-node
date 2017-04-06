@@ -9,7 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(staticDir));
-/*var router = express.Router();
+
+/*var routerr = express.Router();
 
 
 app.use("/", router);
@@ -45,39 +46,42 @@ app.post('/auth/twitter', function(req, res) {
   var requestTokenUrl = 'https://api.twitter.com/oauth/request_token';
   var accessTokenUrl = 'https://api.twitter.com/oauth/access_token';
   var profileUrl = 'https://api.twitter.com/1.1/account/verify_credentials.json';
-
+console.log("goind to part 1");
   // Part 1 of 2: Initial request from Satellizer.
   if (!req.body.oauth_token || !req.body.oauth_verifier) {
     var requestTokenOauth = {
-      consumer_key: config.TWITTER_KEY,
-      consumer_secret: config.TWITTER_SECRET,
+      consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
+      consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
       callback: req.body.redirectUri
     };
-
+console.log(requestTokenOauth);
     // Step 1. Obtain request token for the authorization popup.
     request.post({ url: requestTokenUrl, oauth: requestTokenOauth }, function(err, response, body) {
-      var oauthToken = qs.parse(body);
-
+      var oauthToken = querystring.parse(body);
+		console.log(body);
+		console.log(oauthToken);
+		
+		
       // Step 2. Send OAuth token back to open the authorization screen.
       res.send(oauthToken);
     });
   } else {
     // Part 2 of 2: Second request after Authorize app is clicked.
     var accessTokenOauth = {
-      consumer_key: config.TWITTER_KEY,
-      consumer_secret: config.TWITTER_SECRET,
+      consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
+      consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
       token: req.body.oauth_token,
       verifier: req.body.oauth_verifier
     };
-
+console.log(accessTokenOauth);
     // Step 3. Exchange oauth token and oauth verifier for access token.
     request.post({ url: accessTokenUrl, oauth: accessTokenOauth }, function(err, response, accessToken) {
 
-      accessToken = qs.parse(accessToken);
-
+      accessToken = querystring.parse(accessToken);
+		console.log(accessToken);
       var profileOauth = {
-        consumer_key: config.TWITTER_KEY,
-        consumer_secret: config.TWITTER_SECRET,
+       consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
+      consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
         token: accessToken.oauth_token,
         token_secret: accessToken.oauth_token_secret,
       };
@@ -117,11 +121,57 @@ console.log("here 3");
 	 });
 });
 
+/*------------------------------------------------------------------------------------------------------*/
+app.post('/auth/facebook', function(req, res) {
+  var fields = ['id', 'email', 'first_name', 'last_name', 'link', 'name'];
+  var accessTokenUrl = 'https://graph.facebook.com/v2.5/oauth/access_token';
+  var graphApiUrl = 'https://graph.facebook.com/v2.5/me?fields=' + fields.join(',');
+  var params = {
+    code: req.body.code,
+    client_id: req.body.clientId,
+    client_secret:"8bb6800994144f6b4438a49aadcf5e4e",
+    redirect_uri: req.body.redirectUri
+  };
+console.log(params);
+  // Step 1. Exchange authorization code for access token.
+  request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
+    if (response.statusCode !== 200) {
+      return res.status(500).send({ message: accessToken.error.message });
+    }
+
+    // Step 2. Retrieve profile information about the current user.
+    request.get({ url: graphApiUrl, qs: accessToken, json: true }, function(err, response, profile) {
+      if (response.statusCode !== 200) {
+        return res.status(500).send({ message: profile.error.message });
+      }
+		console.log("showing profile");
+	  console.log(profile);
+	console.log(accessToken.access_token);	 
+ //see this part @srajan
+      //var token = profile.access_token;;
+//console.log(token+" isd yoken");
+            //user.facebook = profile.id;
+            //user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
+            //user.displayName = user.displayName || profile.name;
+          
+	  
+    });
+  });
+});
+/*------------------------------------------------------------------------------------------------------*/
+
+/*------------------------------------*/
 app.get('/auth/instagram',function(req,res){
-	console.log("in get");
+	console.log("in get insta");
 	res.sendStatus(200);
 });
-var server = app.listen(3000, function () {
+app.get('/auth/twitter',function(req,res){
+	console.log("in get twitter");
+	res.sendStatus(200);
+});
+
+
+var server = app.listen(80, function () {
    var host = server.address().address
    var port = server.address().port
 

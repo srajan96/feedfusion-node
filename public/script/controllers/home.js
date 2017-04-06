@@ -11,24 +11,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
   "1": "848631648505679872",
   "2": "848627670271348741",
-  "3": "848627062248271876",
-  "4": "848627055667236864",
-  "5": "848626965636665345",
-  "6": "848621266651287552",
-  "7": "848618040598159360",
-  "8": "848611687703994368",
-  "9": "848611524016914432",
-  "10": "848608504181014529",
-  "11": "848608249653805060",
-  "12": "848603489207017474",
-  "13": "848602842537447424",
-  "14": "848597163131129856",
-  "15": "848595897088962564",
-  "16": "848595663394918401",
-  "17": "848595660253274112",
-  "18": "848589677653245953",
-  "19": "848588954949517313",
-  "20": "848585328227110912"
+
 
 	};
 	//$scope.tweetid=[];
@@ -61,7 +44,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
     $scope.authenticate = function(provider) {
        console.log("in authenticate");
-      $auth.authenticate(provider)
+      $auth.authenticate(provider,$sessionStorage.sessionId)
         .then(function(response) {
 			console.log(response.data);
 			console.log("here in home js");
@@ -107,10 +90,26 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 				}
 
             );
+    };
+     $scope.postStatus = function () {
+        console.log("Posting status");
+          SohagRootService.getPostStatus($scope.postdata).then(
+                function (response) {
+                    console.log(response.data);
+                    console.log(response.data.success);
+                    if(response.data.success==="posted"){ 
+                       
+                        $scope.postdata.status="";
+                    }
+                    else
+                        console.log("Error in posting tweets?Probably more than 140 characters!!");
+                },
+                function (response) {
+                    console.log("loading error of posdata");
+                    console.log(response);
+                }
 
-
-
-
+            );
     };
 
 
@@ -264,5 +263,6 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+    
 
 });
