@@ -111,6 +111,20 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
 
     };
+     $scope.postStatus = function () {
+        console.log("Posting status");
+          SohagRootService.getPostStatus($scope.postdata).then(
+                function (response) {
+                    console.log(response.data);
+                   
+                },
+                function (response) {
+                    console.log("loading error of posdata");
+                    console.log(response);
+                }
+
+            );
+    };
 
 
 
@@ -263,5 +277,6 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
     };
+    
 
 });
