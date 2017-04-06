@@ -85,8 +85,8 @@ console.log(accessTokenOauth);
         token: accessToken.oauth_token,
         token_secret: accessToken.oauth_token_secret,
       };
-	  oauth_tok=accessToken.oauth_token:
-	  oauth_tok_sec=accessToken.oauth_token_secret:
+	  oauth_tok=accessToken.oauth_token;
+	  oauth_tok_sec=accessToken.oauth_token_secret;
 	response.json({token:oauth_tok,token_secret:oauth_tok_sec});
       
     });
