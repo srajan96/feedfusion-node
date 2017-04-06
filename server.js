@@ -88,10 +88,6 @@ console.log(accessTokenOauth);
 	  oauth_tok=accessToken.oauth_token;
 	  oauth_tok_sec=accessToken.oauth_token_secret;
 	console.log(oauth_tok+" "+oauth_tok_sec);
-	
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.json({token:oauth_tok,token_secret:oauth_tok_sec});
       
     });
@@ -124,10 +120,6 @@ console.log("here 3");
         var userdisplayName = body.user.username;
 		console.log(token);
 //		console.log(userinstagram);
-
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.json({token:token_this});
 	
 	 });
@@ -159,10 +151,6 @@ console.log(params);
 		console.log("showing profile");
 	  console.log(profile);
 	console.log(accessToken.access_token);
-	
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 		res.json({token:accessToken.access_token});
  //see this part @srajan
       //var token = profile.access_token;;
@@ -180,18 +168,10 @@ console.log(params);
 /*------------------------------------*/
 app.get('/auth/instagram',function(req,res){
 	console.log("in get insta");
-	
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.sendStatus(200);
 });
 app.get('/auth/twitter',function(req,res){
 	console.log("in get twitter");
-	
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 	res.sendStatus(200);
 });
 
