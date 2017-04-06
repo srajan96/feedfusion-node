@@ -192,11 +192,13 @@ console.log(params);
       }
 		console.log("showing profile");
 	  console.log(profile);
-	  //see this part @srajan
-      var token = profile.access_token;;
-            user.facebook = profile.id;
-            user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
-            user.displayName = user.displayName || profile.name;
+	console.log(accessToken.access_token);	 
+ //see this part @srajan
+      //var token = profile.access_token;;
+//console.log(token+" isd yoken");
+            //user.facebook = profile.id;
+            //user.picture = user.picture || 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
+            //user.displayName = user.displayName || profile.name;
           
 	  
     });
