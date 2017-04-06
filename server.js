@@ -162,7 +162,7 @@ console.log("here 3");
         var userdisplayName = body.user.username;
 		console.log(token);
 //		console.log(userinstagram);
-	res.sendStatus(200);
+	res.send(token);
 	 });
 });
 
@@ -170,7 +170,7 @@ app.get('/auth/instagram',function(req,res){
 	console.log("in get");
 	res.sendStatus(200);
 });
-var server = app.listen(80, function () {
+var server = app.listen(3000, function () {
    var host = server.address().address
    var port = server.address().port
 
