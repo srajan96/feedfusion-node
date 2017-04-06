@@ -9,7 +9,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(staticDir));
-/*var router = express.Router();
+
+/*var routerr = express.Router();
 
 
 app.use("/", router);
@@ -174,10 +175,10 @@ app.post('/auth/facebook', function(req, res) {
   var params = {
     code: req.body.code,
     client_id: req.body.clientId,
-    client_secret: config.FACEBOOK_SECRET,
+    client_secret:"8bb6800994144f6b4438a49aadcf5e4e",
     redirect_uri: req.body.redirectUri
   };
-
+console.log(params);
   // Step 1. Exchange authorization code for access token.
   request.get({ url: accessTokenUrl, qs: params, json: true }, function(err, response, accessToken) {
     if (response.statusCode !== 200) {
@@ -189,7 +190,8 @@ app.post('/auth/facebook', function(req, res) {
       if (response.statusCode !== 200) {
         return res.status(500).send({ message: profile.error.message });
       }
-	  
+		console.log("showing profile");
+	  console.log(profile);
 	  //see this part @srajan
       var token = profile.access_token;;
             user.facebook = profile.id;
