@@ -248,6 +248,45 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
       $auth.authenticate(provider)
         .then(function(response) {
           console.log(response.data);
+		  if(provider=="twitter"){
+			SohagRootService.twitterToken(response.data).then(
+                function (response) {
+                    console.log(response.data);
+                },
+                function (response) {
+                    console.log("loading error of twitter");
+                    console.log(response);
+                }
+
+            );  
+		  }
+		  else if(provider=="facebook"){
+			SohagRootService.facebookToken(response.data).then(
+                function (response) {
+                    console.log(response.data);
+                },
+                function (response) {
+                    console.log("loading error of twitter");
+                    console.log(response);
+                }
+
+            );  
+		  }
+		  else if(provider=="instagram"){
+			 SohagRootService.instagramToken(response.data).then(
+                function (response) {
+                    console.log(response.data);
+                },
+                function (response) {
+                    console.log("loading error of twitter");
+                    console.log(response);
+                }
+
+            ); 
+		  }
+		  else{
+			  console.log("error in auth");
+		  }
 		  //toastr.success('You have successfully signed in with ' + provider + '!');
           //$location.path('/');
         });
