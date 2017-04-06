@@ -33,6 +33,10 @@ sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
       clientId: '84670ddd8cf849a1892ae52963ef53a9',
       redirectUri: window.location.origin+"/auth/instagram",
 	  });
+	     $authProvider.twitter({
+      url: '/auth/twitter'
+    });
+
 
  $authProvider.twitter({
   url: '/auth/twitter',
