@@ -78,14 +78,16 @@ console.log(accessTokenOauth);
     request.post({ url: accessTokenUrl, oauth: accessTokenOauth }, function(err, response, accessToken) {
 
       accessToken = querystring.parse(accessToken);
-		console.log(accessToken);
+	  console.log(accessToken);
       var profileOauth = {
        consumer_key: 'Olwk4ncLNgYZcROLvP9oAFrgv',
       consumer_secret: 'eht2OHYflAV1Cu8GP9XA46zm7KbiivY35TytvJ91aMX67brKEF',
         token: accessToken.oauth_token,
         token_secret: accessToken.oauth_token_secret,
       };
-
+	  oauth_tok=accessToken.oauth_token:
+	  oauth_tok_sec=accessToken.oauth_token_secret:
+	response.json({token:oauth_tok,token_secret:oauth_tok_sec});
       
     });
   }
