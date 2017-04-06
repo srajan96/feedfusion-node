@@ -24,7 +24,8 @@ sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
 
 
       $authProvider.facebook({
-      clientId: '657854390977827'
+      clientId: '1978232082408711',
+      redirectUri: window.location.origin+"/auth/facebook"
     });
 
  
