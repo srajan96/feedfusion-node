@@ -87,7 +87,8 @@ console.log(accessTokenOauth);
       };
 	  oauth_tok=accessToken.oauth_token;
 	  oauth_tok_sec=accessToken.oauth_token_secret;
-	response.json({token:oauth_tok,token_secret:oauth_tok_sec});
+	console.log(oauth_tok+" "+oauth_tok_sec);
+	res.json({token:oauth_tok,token_secret:oauth_tok_sec});
       
     });
   }
