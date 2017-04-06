@@ -82,56 +82,7 @@ app.post('/auth/twitter', function(req, res) {
         token_secret: accessToken.oauth_token_secret,
       };
 
-      // Step 4. Retrieve user's profile information and email address.
-      request.get({
-        url: profileUrl,
-        qs: { include_email: true },
-        oauth: profileOauth,
-        json: true
-      }, function(err, response, profile) {
-
-        // Step 5a. Link user accounts.
-        if (req.header('Authorization')) {
-          User.findOne({ twitter: profile.id }, function(err, existingUser) {
-            if (existingUser) {
-              return res.status(409).send({ message: 'There is already a Twitter account that belongs to you' });
-            }
-
-            var token = req.header('Authorization').split(' ')[1];
-            var payload = jwt.decode(token, config.TOKEN_SECRET);
-
-            User.findById(payload.sub, function(err, user) {
-              if (!user) {
-                return res.status(400).send({ message: 'User not found' });
-              }
-
-              user.twitter = profile.id;
-              user.email = profile.email;
-              user.displayName = user.displayName || profile.name;
-              user.picture = user.picture || profile.profile_image_url_https.replace('_normal', '');
-              user.save(function(err) {
-                res.send({ token: createJWT(user) });
-              });
-            });
-          });
-        } else {
-          // Step 5b. Create a new user account or return an existing one.
-          User.findOne({ twitter: profile.id }, function(err, existingUser) {
-            if (existingUser) {
-              return res.send({ token: createJWT(existingUser) });
-            }
-
-            var user = new User();
-            user.twitter = profile.id;
-            user.email = profile.email;
-            user.displayName = profile.name;
-            user.picture = profile.profile_image_url_https.replace('_normal', '');
-            user.save(function() {
-              res.send({ token: createJWT(user) });
-            });
-          });
-        }
-      });
+      
     });
   }
 });
