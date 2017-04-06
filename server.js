@@ -114,13 +114,14 @@ console.log("here 3");
     // Step 2a. Link user accounts.
   //console.log(body);
 
-	var token=body.access_token;
+	var token_this=body.access_token;
 	var userinstagram = body.user.id;
         var userpicture =  body.user.profile_picture;
         var userdisplayName = body.user.username;
 		console.log(token);
 //		console.log(userinstagram);
-	res.send(token);
+    res.json({token:token_this});
+	
 	 });
 });
 
@@ -149,7 +150,8 @@ console.log(params);
       }
 		console.log("showing profile");
 	  console.log(profile);
-	console.log(accessToken.access_token);	 
+	console.log(accessToken.access_token);
+		res.json({token:accessToken.access_token});
  //see this part @srajan
       //var token = profile.access_token;;
 //console.log(token+" isd yoken");
