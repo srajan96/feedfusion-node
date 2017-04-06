@@ -17,10 +17,6 @@ sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
   when('/',{
     templateUrl : 'templates/login.html',
     controller : 'LoginController as logincntrl'
-  }).
-  when('/auth/:provider',{
-    templateUrl : 'templates/dashboard.html',
-    controller : 'HomeController as homectrl'
   }).        
   otherwise({
     redirectTo: '/'
