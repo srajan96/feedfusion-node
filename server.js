@@ -146,14 +146,16 @@ app.get('/auth/instagram', function(req, res) {
     code: req.body.code,
     grant_type: 'authorization_code'
   };
+  
 console.log("here 2");
   // Step 1. Exchange authorization code for access token.
   request.post({ url: accessTokenUrl, form: params, json: true }, function(error, response, body) {
 console.log("here 3");
     // Step 2a. Link user accounts.
-   
+  console.log(body);
+  
 console.log("here 4");
-console.log(req.header);
+console.log(req);
  if (typeof req.headers.authorization !== 'string') {
     res.sendStatus(400);
     return;

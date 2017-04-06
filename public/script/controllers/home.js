@@ -63,8 +63,9 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
        console.log("in authenticate");
       $auth.authenticate(provider)
         .then(function() {
+			console.log("here in home js");
           //toastr.success('You have successfully signed in with ' + provider + '!');
-          $location.path('/');
+          //$location.path('/');
         });
     };
 
