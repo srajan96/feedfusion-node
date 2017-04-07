@@ -19,6 +19,7 @@ app.use("/movie/:name", router);
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
+  res.header('Access-Control-Allow-Credentials','true');
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
@@ -60,8 +61,7 @@ console.log(requestTokenOauth);
       var oauthToken = querystring.parse(body);
 		console.log(body);
 		console.log(oauthToken);
-		
-		
+	res.setHeader('Access-Control-Allow-Origin','*');
       // Step 2. Send OAuth token back to open the authorization screen.
       res.send(oauthToken);
     });

@@ -1,7 +1,8 @@
 var sohagApp = angular.module('SohagApp',['ngRoute','satellizer','ngStorage','ui.bootstrap','ngtweet']);
 
-sohagApp.config(function($routeProvider, $locationProvider, $authProvider) {
-  console.log('in config ');
+sohagApp.config(function($routeProvider, $locationProvider, $authProvider,$httpProvider) {
+$httpProvider.defaults.withCredentials = true;  
+console.log('in config ');
   /*$locationProvider.html5Mode(true);
   $locationProvider.hashPrefix("!"); //Support for hasbangs url (SEO)
   */
