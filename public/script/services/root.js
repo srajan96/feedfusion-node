@@ -108,7 +108,7 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
                 headers: {
                     'Content-Type': "application/x-www-form-urlencoded",
 					'Access-Control-Allow-Origin':'*',
-					'Access-Control-Allow-Methods':'POST',
+					'Access-Control-Allow-Methods':'*',
 					'Access-Control-Allow-Headers':'Origin, X-Requested-With, Content-Type, Accept'
                 },
                 data: $httpParamSerializer(data)
