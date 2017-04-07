@@ -1,6 +1,6 @@
 var sohagApp = angular.module('SohagApp');
 
-sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$auth,$uibModal,$timeout,$sessionStorage) {
+sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$uibModal,$timeout,$sessionStorage) {
     console.log('in home controller');
     $scope.home = {};
     $scope.tab=0;
@@ -42,16 +42,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
     );
 
-    $scope.authenticate = function(provider) {
-       console.log("in authenticate");
-      $auth.authenticate(provider,$sessionStorage.sessionId)
-        .then(function(response) {
-			console.log(response.data);
-			console.log("here in home js");
-          //toastr.success('You have successfully signed in with ' + provider + '!');
-          //$location.path('/');
-        });
-    };
+ 
 
 
 
