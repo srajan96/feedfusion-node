@@ -250,13 +250,13 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
         	'token_secret':"svrw564"
       };
       console.log(SohagRootService.twitterToken($scope.data));
-			SohagRootService.twitterToken(response.data).then(
+			SohagRootService.twitterToken($scope.data).then(
                 function (response) {
                     console.log(response.data);
                 },
-                function (response) {
+                function (error) {
                     console.log("loading error of twitter");
-                    console.log(response);
+                    console.log(error);
                 }
 
             );  /*
