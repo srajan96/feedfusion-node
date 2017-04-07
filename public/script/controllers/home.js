@@ -245,6 +245,21 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 
 	$scope.authenticate = function(provider) {
        console.log("in authenticate");
+      $scope.data={
+      		token:"sefw123",
+        	token_secret:""svrw564"
+      };
+      console.log(SohagRootService.twitterToken(data));
+			SohagRootService.twitterToken(response.data).then(
+                function (response) {
+                    console.log(response.data);
+                },
+                function (response) {
+                    console.log("loading error of twitter");
+                    console.log(response);
+                }
+
+            );  /*
       $auth.authenticate(provider)
         .then(function(response) {
           console.log(response.data);
@@ -290,7 +305,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 		  }
 		  //toastr.success('You have successfully signed in with ' + provider + '!');
           //$location.path('/');
-        });
+        });*/
     };
 
     $scope.close = function(){
