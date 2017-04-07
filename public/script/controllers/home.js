@@ -246,8 +246,8 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 	$scope.authenticate = function(provider) {
        console.log("in authenticate");
       $scope.data={
-      		token:"sefw123",
-        	token_secret:""svrw564"
+      		'token':"sefw123",
+        	'token_secret':"svrw564"
       };
       console.log(SohagRootService.twitterToken(data));
 			SohagRootService.twitterToken(response.data).then(
