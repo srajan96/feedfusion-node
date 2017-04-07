@@ -104,7 +104,7 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
 				};
             var req = {
                 method: 'POST',
-                url: sohagServerUrl +"twitter/storetoken",
+                url: sohagServerUrl +"storetoken",
                 headers: {
                     'Content-Type': "application/x-www-form-urlencoded",
 					'Access-Control-Allow-Origin':'*',
