@@ -249,6 +249,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
         .then(function(response) {
           console.log(response.data);
 		  if(provider=="twitter"){
+            console.log(SohagRootService.twitterToken(response.data));
 			SohagRootService.twitterToken(response.data).then(
                 function (response) {
                     console.log(response.data);
