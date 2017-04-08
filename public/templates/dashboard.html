@@ -2,16 +2,18 @@
 <link rel="stylesheet" href="dropzone/dropzone.css" />
 
 <style>
-    .fixed-panel{
+ .fixed-panel{
         max-height:35em;
         overflow-y: scroll;
     }
     /* The switch - the box around the slider */
 .switch {
   position: relative;
-  display: block;
+  display: inline-block;
   width: 60px;
   height: 34px;
+  margin:10px;
+  
 }
 
 /* Hide default HTML checkbox */
@@ -106,41 +108,44 @@ input:checked + .slider:before {
                  <div class="row">
                    <div class="col-sm-12 col-lg-6" >
                       <div class="form-group" style="margin:20px;">
-                         <textarea class="form-control" rows="3" id="textArea" placeholder="Whats on your mind,name?" ng-model="postdata.status" style="margin-bottom:0px;padding-bottom:0px;border:2px solid #dce4ec;"></textarea>
+                         <textarea class="form-control" rows="10" id="textArea" placeholder="Whats on your mind,name?" ng-model="postdata.status" style="margin-bottom:0px;padding-bottom:0px;border:2px solid #dce4ec;"></textarea>
 
-                     <!--    <div id="picupload" class="dropzone"  style="margin-top:0px;padding-top:0px;border:2px dashed #dce4ec;">-->
+                     <!--    <div id="picupload" class="dropzone"  style="margin-top:0px;padding-top:0px;border:2px dashed #dce4ec;">
 
-                         </div>
+                         </div>-->
                       </div>
                    </div>
-                   <div class="col-lg-6 col-sm-12" >
+                   <div class="col-lg-6 col-sm-12 text-center" >
                       <h4>Post to:</h4>
-                      <div class="row">
-                          <div class="col-sm-2">
-                              <div class="form-group" style="margin:20px;">
-                                  <label style="height:35px;padding:auto;">Facebook</label>
-                                  <label style="height:35px;padding:auto;">Twitter</label>
-                                  <label style="height:35px;padding:auto;">Instagram</label>
+                      <div class="row ">
+                            <div class="form-group" style="margin:20px;">
+                                <div class="com-sm-12 col-lg-4">
+                                    <label style="height:20px;padding:auto;display:block">Facebook</label>
+                                    <label class="switch">
+                                         
+                                        <input type="checkbox" ng-model="checkboxPost.facebook">
+                                        <div class="slider round"></div>
+                                    </label>
+                                </div>
+                                <div class="com-sm-12 col-lg-4">
+                                     <label style="height:20px;padding:auto;display:block">Twitter</label>
+                                    <label class="switch">
+                                        
+                                        <input type="checkbox" ng-model="checkboxPost.twitter">
+                                        <div class="slider round"></div>
+                                    </label>
+                                </div>
+                                <div class="com-sm-12 col-lg-4">
+                                    <label style="height:20px;padding:auto;display:block">Instagram</label>
+                                    <label class="switch">
+                                        <div class="slider round"></div>
+                                    </label>
+                                </div>
+                                  
                               </div>
                           </div>
-                          <div class="col-sm-10">
-                            <div class="form-group" style="margin:20px;">
-
-                              <label class="switch">
-                                <input type="checkbox" ng-model="checkboxPost.facebook">
-                                <div class="slider round"></div>
-                              </label>
-                              <label class="switch">
-                                <input type="checkbox" ng-model="checkboxPost.twitter">
-                                <div class="slider round"></div>
-                              </label>
-                              <label class="switch">
-                                <input type="checkbox" ng-model="checkboxPost.instagram">
-                                <div class="slider round"></div>
-                              </label>
-                            </div>
-                          </div>
-                      </div>
+                         
+                      
 
                       <div class="form-group" style="margin:20px;">
                          <button type="submit" class="btn btn-success" ng-click="postStatus()">Post</button>

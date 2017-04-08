@@ -76,7 +76,7 @@ sohagApp.controller('RegisterController', function ($scope, $routeParams, $rootS
       //function to allow only alphabets
     $scope.allowOnlyAlphabets=function(element){
     var content=element;
-    var regex = /^[a-zA-Z]*$/;
+    var regex = /^[a-zA-Z ]*$/;
 
     if (regex.test(content)){
       
