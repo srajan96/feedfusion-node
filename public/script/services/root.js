@@ -6,15 +6,20 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
 
     return {
 	
-	getHomePageData: function () {
-			
+	 getTWHomePageData: function () {
+           data={
+            'username':$sessionStorage.username,
+            'session':$sessionStorage.sessionId
+            
+                        };	
             var req = {
+             
                 method: 'POST',
-                url: sohagServerUrl + "getHomePageData",
+                url: sohagServerUrl + "twitter/getfeed",
                 headers: {
-                    'Content-Type': "text/html"
+                    'Content-Type': "application/x-www-form-urlencoded"
                 },
-                data: ""
+                data: $httpParamSerializer(data)
             };
             return $http(req);
         },
@@ -78,7 +83,7 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
 			};
             return $http(req);
         },
-        getPostStatus:function(postdata){
+        getTWPostStatus:function(postdata){
             data={
                     'username':$sessionStorage.username,
                     'session':$sessionStorage.sessionId,

@@ -180,6 +180,10 @@ app.get('/auth/twitter',function(req,res){
 	console.log("in get twitter");
 	res.sendStatus(200);
 });
+app.get('/auth/facebook',function(req,res){
+	console.log("in get twitter");
+	res.sendStatus(200);
+});
 
 
 var server = app.listen(80, function () {

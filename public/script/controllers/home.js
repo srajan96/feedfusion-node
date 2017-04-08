@@ -10,7 +10,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 	  $scope.tweetid={
 
   "1": "848631648505679872",
-  "2": "848627670271348741",
+  "2": "848631648505679872",
 
 
 	};
@@ -24,7 +24,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
     $scope.isSet = function(tabIn){
       return $scope.tab === tabIn;
     };
-    SohagRootService.getHomePageData().then(
+    SohagRootService.getTWHomePageData().then(
         function (response) {
             $scope.tweetid = response.data;
 			console.log($scope.tweetid);
@@ -91,9 +91,9 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
             );
     };
-     $scope.postStatus = function () {
+     $scope.postTWStatus = function () {
         console.log("Posting status");
-          SohagRootService.getPostStatus($scope.postdata).then(
+          SohagRootService.getTWPostStatus($scope.postdata).then(
                 function (response) {
                     console.log(response.data);
                     console.log(response.data.success);
