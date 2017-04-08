@@ -1,6 +1,6 @@
 var sohagApp = angular.module('SohagApp');
 
-sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$uibModal,$timeout,$sessionStorage) {
+sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$auth,$uibModal,$timeout,$sessionStorage) {
     console.log('in home controller');
     $scope.home = {};
     $scope.tab=0;
@@ -42,7 +42,16 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
     );
 
- 
+    $scope.authenticate = function(provider) {
+       console.log("in authenticate");
+      $auth.authenticate(provider,$sessionStorage.sessionId)
+        .then(function(response) {
+			console.log(response.data);
+			console.log("here in home js");
+          //toastr.success('You have successfully signed in with ' + provider + '!');
+          //$location.path('/');
+        });
+    };
 
 
 
@@ -236,27 +245,14 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 
 	$scope.authenticate = function(provider) {
        console.log("in authenticate");
-      $scope.data={
-      		'token':"sefw123",
-        	'token_secret':"svrw564"
-      };
-			SohagRootService.twitterToken($scope.data).then(
-                function (response) {
-                    console.log(response.data);
-                },
-                function (error) {
-                    console.log("loading error of twitter");
-                    console.log(error);
-                }
-
-            );  /*
       $auth.authenticate(provider)
         .then(function(response) {
           console.log(response.data);
 		  if(provider=="twitter"){
-            console.log(SohagRootService.twitterToken(response.data));
+            
 			SohagRootService.twitterToken(response.data).then(
                 function (response) {
+                    console.log(response);
                     console.log(response.data);
                 },
                 function (response) {
@@ -272,7 +268,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
                     console.log(response.data);
                 },
                 function (response) {
-                    console.log("loading error of twitter");
+                    console.log("loading error of facebbok");
                     console.log(response);
                 }
 
@@ -284,7 +280,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
                     console.log(response.data);
                 },
                 function (response) {
-                    console.log("loading error of twitter");
+                    console.log("loading error of insta");
                     console.log(response);
                 }
 
@@ -295,7 +291,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 		  }
 		  //toastr.success('You have successfully signed in with ' + provider + '!');
           //$location.path('/');
-        });*/
+        });
     };
 
     $scope.close = function(){

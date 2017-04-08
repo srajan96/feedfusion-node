@@ -92,6 +92,7 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
                 },
                 data: $httpParamSerializer(data)
 			};
+            console.log(req.headers);
             return $http(req);
             
         },
@@ -100,13 +101,14 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
                     'username':$sessionStorage.username,
                     'session':$sessionStorage.sessionId,
                     'token':tokendata.token,
-					'token_secret':tokendata.token_secret
+		'token_secret':tokendata.token_secret
 				};
             var req = {
                 method: 'POST',
                 url: sohagServerUrl +"twitter/storetoken",
                 headers: {
                     'Content-Type': "application/x-www-form-urlencoded",
+                    
                 },
                 data: $httpParamSerializer(data)
 			};
