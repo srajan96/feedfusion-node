@@ -124,7 +124,7 @@ console.log("here 3");
 	var userinstagram = body.user.id;
         var userpicture =  body.user.profile_picture;
         var userdisplayName = body.user.username;
-		console.log(token);
+		console.log(token_this);
 //		console.log(userinstagram);
     res.json({token:token_this});
 	

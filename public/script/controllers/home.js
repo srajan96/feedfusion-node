@@ -111,6 +111,26 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
             );
     };
+     $scope.postFBStatus = function () {
+        console.log("Posting status");
+          SohagRootService.getFBPostStatus($scope.postdata).then(
+                function (response) {
+                    console.log(response.data);
+                    console.log(response.data.success);
+                    if(response.data.success==="posted"){ 
+                       
+                        $scope.postdata.status="";
+                    }
+                    else
+                        console.log("Error in posting tweets?Probably more than 140 characters!!");
+                },
+                function (response) {
+                    console.log("loading error of posdata");
+                    console.log(response);
+                }
+
+            );
+    };
 
 
 

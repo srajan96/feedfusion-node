@@ -101,6 +101,24 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
             return $http(req);
             
         },
+         getFBPostStatus:function(postdata){
+            data={
+                    'username':$sessionStorage.username,
+                    'session':$sessionStorage.sessionId,
+                    'status':postdata.status
+				};
+            var req = {
+                method: 'POST',
+                url: sohagServerUrl +"facebook/postupdate",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+			};
+            console.log(req.headers);
+            return $http(req);
+            
+        },
 		twitterToken:function(tokendata){
             data={
                     'username':$sessionStorage.username,
