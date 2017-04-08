@@ -1,6 +1,6 @@
 var sohagApp = angular.module('SohagApp');
 
-sohagApp.controller('LoginController', function ($scope, $routeParams, $rootScope, $sessionStorage, SohagRootService) {
+sohagApp.controller('LoginController', function ($scope, $routeParams, $rootScope, $sessionStorage, SohagRootService, Notification) {
     console.log('in login controller');
     $scope.userdata={
         username:"",
@@ -20,13 +20,25 @@ sohagApp.controller('LoginController', function ($scope, $routeParams, $rootScop
                     console.log("loading user response data");
                     console.log($scope.userres);
 					if($scope.userres.login_correct==true){
+							Notification.success({
+								message: "Login Successfull.",
+								delay:1000
+							});
 							$sessionStorage.sessionId = response.data.sessionid;
 							$sessionStorage.username=$scope.userdata.username;
+							$sessionStorage.loggedIn=true;
 							$scope.rootctrl.redirect("/dashboard");
 
 					}
+					else
+						Notification.error({
+                            message: "Wrong Credentials.Please try again."
+						});
                 },
                 function (response) {
+					Notification.error({
+                            message: "Error:"+response
+						});
                     console.log("loading error of login");
                     console.log(response);
                 }
@@ -42,7 +54,7 @@ sohagApp.controller('LoginController', function ($scope, $routeParams, $rootScop
    
 });
 
-sohagApp.controller('RegisterController', function ($scope, $routeParams, $rootScope, SohagRootService) {
+sohagApp.controller('RegisterController', function ($scope, $routeParams, $rootScope, SohagRootService, Notification) {
     console.log('in register controller');
     $scope.repasshelp="";
     $scope.repasshelpstyle={
@@ -112,18 +124,27 @@ sohagApp.controller('RegisterController', function ($scope, $routeParams, $rootS
 
         if(checkpass){
             var str=$scope.userdata.username;
-            if(allowOnlyAlphabets($scope.userdata.name)){
+            if($scope.allowOnlyAlphabets($scope.userdata.name)){
                 if($scope.userdata.pass.length<8){
-                  alert("Password should be greater than 8 characters");
-                  return false;
+                  //alert("Password should be greater than 8 characters");
+                Notification.error({
+					message: "Password should be greater than 8 characters"
+				});
+				  return false;
                 }
                 return true;
             }
             else{
-                alert("Name cannot contain numbers!!");
-                return false;
+                //alert("Name cannot contain numbers!!");
+                Notification.error({
+					message: "Name cannot contain numbers!!"
+				});
+				return false;
               }
         }
+		Notification.error({
+			message: "Password does not match"
+		});
         return false;
     };
    /* $scope.register=function(){
@@ -149,28 +170,44 @@ sohagApp.controller('RegisterController', function ($scope, $routeParams, $rootS
     */
     $scope.register = function(){
         console.log("Checking");
-        
-            console.log("redirecting");
+		var check=$scope.checkregister();
+        /*Notification.error({
+			message: "Check:"+check
+		});
+		*/
+        if(check){  
+			console.log("redirecting");
             SohagRootService.registerUser($scope.userdata).then(
                 function (response) {
 					console.log(response.data)
                     $scope.userres = response.data;
                     console.log("loading user response data");
                     console.log($scope.userres);
-					if($scope.userres=="true")
+					if($scope.userres=="true"){
+						Notification.success({
+							message: "Registration Successfull.Please login to continue."
+						});
 						$scope.rootctrl.redirect("/");
-				
+					
+					}
+					else{
+						Notification.error({
+							message: "Error:"+$scope.userres
+						});
+					}
                 },
                 function (response) {
-					
+					Notification.error({
+							message: "Error:"+$scope.userres
+					});
                     console.log("loading error of login");
                     console.log(response);
 					
                 }
 
             );
-            
-            
+        }    
+             
         
        
     };

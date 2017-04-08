@@ -1,6 +1,6 @@
 var sohagApp = angular.module('SohagApp');
 
-sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$auth,$uibModal,$timeout,$sessionStorage) {
+sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$auth,$uibModal,$timeout,$sessionStorage, Notification) {
     console.log('in home controller');
     $scope.home = {};
     $scope.tab=0;
@@ -81,11 +81,17 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
                 function (response) {
 					$sessionStorage.sessionId="";
 					$sessionStorage.username="";
-
+					$sessionStorage.loggedIn=false;
+					Notification.success({
+                            message: "Logged out succeassfully."
+					});
 					$scope.rootctrl.redirect("/");
-
+					
 			    },
                 function (response) {
+					Notification.error({
+                            message: "Error:"+response
+					});
 					console.log("error in logout");
 				}
 
@@ -98,13 +104,22 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
                     console.log(response.data);
                     console.log(response.data.success);
                     if(response.data.success==="posted"){ 
-                       
+						Notification.success({
+                            message: "Posted succeassfully."
+						});
                         $scope.postdata.status="";
                     }
-                    else
-                        console.log("Error in posting tweets?Probably more than 140 characters!!");
+                    else{
+						Notification.error({
+                            message: "Error in posting tweets?Probably more than 140 characters!!"
+						});
+						console.log("Error in posting tweets?Probably more than 140 characters!!");
+					}
                 },
                 function (response) {
+					Notification.error({
+                            message: "Error:"+response
+					});
                     console.log("loading error of posdata");
                     console.log(response);
                 }
@@ -133,7 +148,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
 
 
-sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance){
+sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance, Notification){
 
 
 	$scope.repasshelp="done";
@@ -200,19 +215,31 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 					if($scope.userres==="\"true\""){
 						//$scope.rootctrl.redirect("/dashboard");
 						$uibModalInstance.dismiss('cancel');
+						Notification.success({
+                            message: "Password updtaed successfully"
+						});
 						$route.reload();
 					}
 					else if($scope.userres==="\"false\"")
-						$scope.repasshelp="Wrong password";
+						Notification.error({
+                            message: "Wrong password"
+						});
 					else{
-						$scope.repasshelp="Sessionid error.Redirecting";
+						//$scope.repasshelp="Sessionid error.Redirecting";
+						Notification.error({
+                            message: "Sessionid error.Please login again.Redirecting"
+						});
 						$scope.rootctrl.redirect("/");
 					}
 
 
                 },
                 function (response) {
-					$scope.repasshelp="error";
+					//$scope.repasshelp="error";
+					Notification.error({
+                        message: "Error:"+response
+					});
+					
 					console.log("loading error of login");
                     console.log(response);
 
@@ -241,7 +268,7 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 
 
 
-sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance,$auth){
+sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance,$auth, Notification){
 
 	$scope.authenticate = function(provider) {
        console.log("in authenticate");
@@ -254,10 +281,17 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
                 function (response) {
                     console.log(response);
                     console.log(response.data);
+					Notification.success({
+                            message: "Twitter Account Added"
+					});
+					$route.reload();
                 },
                 function (response) {
                     console.log("loading error of twitter");
-                    console.log(response);
+                    Notification.error({
+                            message: "Error:"+response
+						});
+					console.log(response);
                 }
 
             );  
@@ -266,9 +300,16 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 			SohagRootService.facebookToken(response.data).then(
                 function (response) {
                     console.log(response.data);
-                },
+					Notification.success({
+                            message: "Facebook Account Added"
+					});
+					$route.reload();
+				},
                 function (response) {
                     console.log("loading error of facebbok");
+					Notification.error({
+                            message: "Error:"+response
+						});
                     console.log(response);
                 }
 
@@ -278,9 +319,16 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 			 SohagRootService.instagramToken(response.data).then(
                 function (response) {
                     console.log(response.data);
+					Notification.success({
+                            message: "Instagram Account Added"
+					});
+					$route.reload();
                 },
                 function (response) {
                     console.log("loading error of insta");
+					Notification.error({
+                            message: "Error:"+response
+						});
                     console.log(response);
                 }
 
