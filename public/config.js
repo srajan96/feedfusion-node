@@ -1,14 +1,36 @@
-var sohagApp = angular.module('SohagApp',['ngRoute','satellizer','ngStorage','ui.bootstrap','ngtweet']);
+var sohagApp = angular.module('SohagApp',['ngRoute','satellizer','ngStorage','ui.bootstrap','ui-notification','ngtweet']);
+
+
+sohagApp.config(function (NotificationProvider) {
+    NotificationProvider.setOptions({
+        delay: 5000,
+        startTop: 20,
+        startRight: 10,
+        verticalSpacing: 20,
+        horizontalSpacing: 20,
+        positionX: 'right',
+        positionY: 'top'
+    });
+});
 
 sohagApp.config(function($routeProvider, $locationProvider, $authProvider,$httpProvider) {
-$httpProvider.defaults.withCredentials = true;
- $httpProvider.defaults.useXDomain = true;  
 console.log('in config ');
   /*$locationProvider.html5Mode(true);
   $locationProvider.hashPrefix("!"); //Support for hasbangs url (SEO)
   */
   $routeProvider.
   when('/dashboard',{
+	resolve: {
+                "check": function ($location, $sessionStorage, Notification) {
+                    if (!$sessionStorage.loggedIn) {
+                        $location.path('/login');
+                        Notification.error({
+                            message: "You must be logged in to access that URL"
+                        })
+                    }
+
+                }
+            },  
     templateUrl : 'templates/dashboard.html',
     controller : 'HomeController as homectrl'
   }).

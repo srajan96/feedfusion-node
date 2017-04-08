@@ -216,15 +216,15 @@ input:checked + .slider:before {
                </div>
                <div class="modal-body">
                   <div class="row">
-                       <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                       <div ng-if="homectrl.accountStatus.facebook" class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
                            <div> <i class="fa fa-facebook fa-4x" style="" aria-hidden="true"></i></div>
-                           <div><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('facebook')">Connect Facebook</a></div>
+                           <div ><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('facebook')">Connect Facebook</a></div>
                       </div>
-                      <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                      <div ng-if="homectrl.accountStatus.twitter" class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
                            <div> <i class="fa fa-twitter fa-4x" style="" aria-hidden="true"></i></div>
                            <div><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('twitter')">Connect Twitter</a></div>
                       </div>
-                      <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                      <div ng-if="homectrl.accountStatus.instagram" class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
                            <div> <i class="fa fa-instagram fa-4x" style="" aria-hidden="true"></i></div>
                            <div><a href="" class="btn btn-primary" style="margin-top:5px;" ng-click="authenticate('instagram')">Connect Instagram</a></div>
                       </div>
@@ -232,15 +232,15 @@ input:checked + .slider:before {
                 </div>
                    <hr>
                    <div class="row">
-                       <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                       <div ng-if="!homectrl.accountStatus.facebook" class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
                          <div> <i class="fa fa-facebook fa-4x fbcolor"  aria-hidden="true"></i></div>
-                         <div><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div>
+                         <div ><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div>
                        </div>
-                       <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                       <div ng-if="!homectrl.accountStatus.twitter" class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
                         <div> <i class="fa fa-twitter fa-4x twcolor" aria-hidden="true" ></i></div>
                          <div><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div>
                        </div>
-                       <div class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
+                       <div ng-if="!homectrl.accountStatus.instagram" class="col-sm-4" style="text-align:center;border-right:1px solid #gray">
                            <div> <i class="fa fa-instagram fa-4x incolor" aria-hidden="true" ></i></div>
                            <div><a href="" class="btn btn-success" style="margin-top:5px;">Connected!</a></div>
 

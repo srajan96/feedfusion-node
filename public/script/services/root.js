@@ -171,6 +171,22 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
 			};
             return $http(req);
             
+        },
+		getAccountStatus:function(){
+            data={
+                    'username':$sessionStorage.username,
+                    'session':$sessionStorage.sessionId
+				};
+            var req = {
+                method: 'POST',
+                url: sohagServerUrl +"getuseraccountstatus",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+			};
+            return $http(req);
+            
         }
     };
     
