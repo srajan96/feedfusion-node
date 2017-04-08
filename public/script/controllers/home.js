@@ -3,6 +3,7 @@ var sohagApp = angular.module('SohagApp');
 sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope, SohagRootService,$auth,$uibModal,$timeout,$sessionStorage, Notification) {
     console.log('in home controller');
     $scope.home = {};
+	$scope.accountStatus={};
     $scope.tab=0;
     $scope.dataStatus="not-ready";
 	  $scope.username=$sessionStorage.username;
@@ -24,6 +25,18 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
     $scope.isSet = function(tabIn){
       return $scope.tab === tabIn;
     };
+	SohagRootService.getAccountStatus().then(
+        function (response) {
+            $scope.accountStatus = response.data;
+			console.log($scope.accountStatus);
+            console.log("loading account status data");
+        },
+        function (response) {
+            console.log("loading error of account status ....");
+            console.log(response);
+        }
+
+    );
     SohagRootService.getTWHomePageData().then(
         function (response) {
             $scope.tweetid = response.data;
@@ -216,7 +229,7 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 						//$scope.rootctrl.redirect("/dashboard");
 						$uibModalInstance.dismiss('cancel');
 						Notification.success({
-                            message: "Password updtaed successfully"
+                            message: "Password updated successfully"
 						});
 						$route.reload();
 					}
@@ -269,7 +282,6 @@ sohagApp.controller('passwordModalCtrl',function($scope, SohagRootService, $rout
 
 
 sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route, $sessionStorage,$rootScope, $uibModalInstance,$auth, Notification){
-
 	$scope.authenticate = function(provider) {
        console.log("in authenticate");
       $auth.authenticate(provider)
@@ -284,6 +296,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 					Notification.success({
                             message: "Twitter Account Added"
 					});
+					$scope.accountStatus.twitter=true;
 					$route.reload();
                 },
                 function (response) {
@@ -303,6 +316,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 					Notification.success({
                             message: "Facebook Account Added"
 					});
+					$scope.accountStatus.facebook=true;
 					$route.reload();
 				},
                 function (response) {
@@ -322,6 +336,7 @@ sohagApp.controller('accountModalCtrl',function($scope, SohagRootService, $route
 					Notification.success({
                             message: "Instagram Account Added"
 					});
+					$scope.accountStatus.instagram=true;
 					$route.reload();
                 },
                 function (response) {

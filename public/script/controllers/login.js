@@ -191,6 +191,7 @@ sohagApp.controller('RegisterController', function ($scope, $routeParams, $rootS
 					
 					}
 					else{
+						console.log(response);
 						Notification.error({
 							message: "Error:"+$scope.userres
 						});
