@@ -127,15 +127,15 @@ input:checked + .slider:before {
                             <div class="form-group" style="margin:20px;">
 
                               <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" ng-model="checkboxPost.facebook">
                                 <div class="slider round"></div>
                               </label>
                               <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" ng-model="checkboxPost.twitter">
                                 <div class="slider round"></div>
                               </label>
                               <label class="switch">
-                                <input type="checkbox">
+                                <input type="checkbox" ng-model="checkboxPost.instagram">
                                 <div class="slider round"></div>
                               </label>
                             </div>
@@ -143,7 +143,7 @@ input:checked + .slider:before {
                       </div>
 
                       <div class="form-group" style="margin:20px;">
-                         <button type="submit" class="btn btn-success" ng-click="postFBStatus()">Post</button>
+                         <button type="submit" class="btn btn-success" ng-click="postStatus()">Post</button>
                          <button type="reset" class="btn btn-error">Cancel</button>
                       </div>
                  </div>

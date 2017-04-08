@@ -5,6 +5,11 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
     $scope.home = {};
 	$rootScope.accountStatus={
 	};
+	$scope.checkboxPost={
+		facebook:false,
+		twitter:false,
+		instagram:false
+	}
     $scope.tab=0;
     $scope.dataStatus="not-ready";
 	  $scope.username=$sessionStorage.username;
@@ -109,14 +114,14 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
             );
     };
      $scope.postTWStatus = function () {
-        console.log("Posting status");
+        console.log("Posting status in twitter");
           SohagRootService.getTWPostStatus($scope.postdata).then(
                 function (response) {
                     console.log(response.data);
                     console.log(response.data.success);
                     if(response.data.success==="posted"){ 
 						Notification.success({
-                            message: "Posted succeassfully."
+                            message: "Posted On Twitter successfully."
 						});
                         $scope.postdata.status="";
                     }
@@ -138,17 +143,23 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
             );
     };
      $scope.postFBStatus = function () {
-        console.log("Posting status");
+        console.log("Posting status in fb");
           SohagRootService.getFBPostStatus($scope.postdata).then(
                 function (response) {
                     console.log(response.data);
                     console.log(response.data.success);
                     if(response.data.success==="posted"){ 
-                       
+                       Notification.success({
+                            message: "Posted On Facebook successfully."
+						});
                         $scope.postdata.status="";
                     }
-                    else
-                        console.log("Error in posting tweets?Probably more than 140 characters!!");
+                    else{
+						Notification.error({
+                            message: "Error in posting on fb"
+						});
+					}
+                        
                 },
                 function (response) {
                     console.log("loading error of posdata");
@@ -156,6 +167,25 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
                 }
 
             );
+    };
+	$scope.postStatus = function () {
+        console.log("Posting status");
+        if($scope.checkboxPost.twitter==true){
+			$scope.postTWStatus();
+		}
+		if($scope.checkboxPost.facebook==true){
+			$scope.postFBStatus();
+		}
+		if($scope.checkboxPost.instagram==true){
+			Notification.error({
+				message: "Insta posts not yet configured"
+			});
+		}
+		if($scope.checkboxPost.instagram!=true&&$scope.checkboxPost.facebook!=true&&$scope.checkboxPost.twitter!=true){
+			Notification.error({
+				message: "Please select social handle"
+			});
+		}
     };
 
 
