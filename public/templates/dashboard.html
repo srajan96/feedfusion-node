@@ -174,8 +174,9 @@ input:checked + .slider:before {
                   <h3 class="panel-title"><i class="fa fa-facebook " style="margin-right:5px;" aria-hidden="true"></i>  Facebook</h3>
                </div>
                <div class="panel-body fixed-panel">
-                  <div class="fb-post" data-href="https://www.facebook.com/413508268747517/posts/899678100130529" data-width="500" data-show-text="true"></div>
-                       <div class="fb-post" ng-repeat="fbId in fbid" data-href="{{fbId}}" data-width=350" data-show-text="true"></div>
+                   <div ng-repeat="fbId in fbid">
+                       <div class="fb-post" data-href="{{fbId}}" data-width="380" data-show-text="true"></div>
+                   </div>
                </div>
             </div>
          </div>
