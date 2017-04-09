@@ -23,6 +23,23 @@ sohagApp.factory('SohagRootService', function ($http,$httpParamSerializer,$sessi
             };
             return $http(req);
         },
+		getFbHomePageData: function () {
+           data={
+            'username':$sessionStorage.username,
+            'session':$sessionStorage.sessionId
+            
+                        };	
+            var req = {
+             
+                method: 'POST',
+                url: sohagServerUrl + "facebook/getfeed",
+                headers: {
+                    'Content-Type': "application/x-www-form-urlencoded"
+                },
+                data: $httpParamSerializer(data)
+            };
+            return $http(req);
+        },
         getLoginData: function (userdata) {
 
             var req = {

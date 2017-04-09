@@ -17,8 +17,11 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 	  $scope.tweetid={
 
   "1": "848631648505679872",
-  "2": "848631648505679872",
+  "2": "848631648505679872"
 
+
+	};
+	$scope.fbid={
 
 	};
 	//$scope.tweetid=[];
@@ -58,7 +61,19 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
 
     );
 
-    $scope.authenticate = function(provider) {
+    SohagRootService.getFbHomePageData().then(
+        function (response) {
+            $scope.fbid = response.data;
+			console.log($scope.fbid);
+            console.log("loading fb home data");
+		},
+        function (response) {
+            console.log("loading fb home error....");
+            console.log(response);
+        }
+
+    );
+	$scope.authenticate = function(provider) {
        console.log("in authenticate");
       $auth.authenticate(provider,$sessionStorage.sessionId)
         .then(function(response) {
