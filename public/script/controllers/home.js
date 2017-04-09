@@ -64,7 +64,7 @@ sohagApp.controller('HomeController', function ($scope, $routeParams, $rootScope
     SohagRootService.getFbHomePageData().then(
         function (response) {
             $scope.fbid = response.data;
-			console.log($scope.fbid);
+            console.log($scope.fbid);
             console.log("loading fb home data");
 		},
         function (response) {

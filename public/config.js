@@ -1,4 +1,4 @@
-var sohagApp = angular.module('SohagApp',['ngRoute','satellizer','ngStorage','ui.bootstrap','ui-notification','ngtweet']);
+var sohagApp = angular.module('SohagApp',['ngRoute','satellizer','ngStorage','ui.bootstrap','ui-notification','ngtweet','ezfb']);
 
 
 sohagApp.config(function (NotificationProvider) {
@@ -10,6 +10,14 @@ sohagApp.config(function (NotificationProvider) {
         horizontalSpacing: 20,
         positionX: 'right',
         positionY: 'top'
+    });
+});
+
+sohagApp.config(function(ezfbProvider) {
+    // Set up FB
+    ezfbProvider.setLocale('en_US');
+    ezfbProvider.setInitParams({
+        appId:'1978232082408711' // My FB APP ID
     });
 });
 
