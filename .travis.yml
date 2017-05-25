@@ -2,7 +2,7 @@ language: node_js
 node_js:
 - '6'
 addons:
-  ssh_known_hosts: 139.59.64.249
+  ssh_known_hosts: 139.59.12.220
 after_success:
 - chmod +x _scripts/deploy.sh
 - _scripts/deploy.sh
